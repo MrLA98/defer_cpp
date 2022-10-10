@@ -19,11 +19,10 @@ void recur_defer() {
 
 int main() {
   DEFER(test_func, 1, "main");
-  //use_defer();
+  use_defer();
   DEFER(test_func, 5, "main");
-  //recur_defer();
-  DEFER(test_func, 6, "main");
-
+  recur_defer();
+  DEFER([]() { cout << "lambda" << endl; });
 
   return 0;
 }
