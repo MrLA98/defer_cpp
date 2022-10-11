@@ -10,7 +10,7 @@
 #define PREFIX_ d_
 #define PREFIX CONCACT(PREFIX_,__COUNTER__)
 #define DEFER(...) defer::Defer PREFIX(ADDRESS, __VA_ARGS__)
-// defer::Defer d1((uint64_t)(__builtin_return_address(0)), test_func, 3, "recur_defer");
+// defer::Defer d1((uint64_t)(__builtin_return_address(0)), func, args...);
 
 
 namespace defer {
