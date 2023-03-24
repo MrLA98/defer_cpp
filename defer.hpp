@@ -5,13 +5,12 @@
 #include <unordered_map>
 
 #define ADDRESS (uint64_t)(__builtin_return_address(0))
-#define CONCACT_(x,y) x##y
-#define CONCACT(x,y) CONCACT_(x,y)
+#define CONCACT_(x, y) x##y
+#define CONCACT(x, y) CONCACT_(x, y)
 #define PREFIX_ d_
-#define PREFIX CONCACT(PREFIX_,__COUNTER__)
+#define PREFIX CONCACT(PREFIX_, __COUNTER__)
 #define DEFER(...) defer::Defer PREFIX(ADDRESS, __VA_ARGS__)
 // defer::Defer d1((uint64_t)(__builtin_return_address(0)), func, args...);
-
 
 namespace defer {
 
@@ -19,15 +18,15 @@ using std::function;
 using std::unordered_map;
 
 class Defer {
- private:
+private:
   // node with defer action function
   struct Node {
     // constructors
     Node(function<void()> &&f) : func(std::forward<function<void()>>(f)) {}
     Node() : func(nullptr), next(nullptr) {}
 
-    function<void()> func;  // store a defer action function
-    Node *next;             // next node
+    function<void()> func; // store a defer action function
+    Node *next;            // next node
 
     // destructor run the defer action function
     ~Node() {
@@ -56,7 +55,7 @@ class Defer {
     addr_map_.erase(addr_);
   }
 
- public:
+public:
   // constructors
   template <class Func, class... Args>
   explicit Defer(uint64_t addr, Func &&f, Args &&...args)
@@ -97,4 +96,4 @@ class Defer {
 // static variables
 unordered_map<uint64_t, Defer::Node *> Defer::addr_map_;
 
-}  // namespace defer
+} // namespace defer

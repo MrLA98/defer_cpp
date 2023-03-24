@@ -52,4 +52,4 @@ int main() {
 // 1
 ```
 
-Play Happily!
+Play happily and have fun!

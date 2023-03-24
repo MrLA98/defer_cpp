@@ -18,11 +18,11 @@ void recur_defer() {
 }
 
 class Obj {
- private:
+private:
   int count_;
   double val_;
 
- public:
+public:
   Obj() : count_(10), val_(1){};
   void operator()(double val) {
     val_ = val;
@@ -41,3 +41,15 @@ int main() {
 
   return 0;
 }
+
+/*
+ * exect output:
+ * 2-test_func-use_defer
+ * 2-test_func-use_defer
+ * 4-test_func-recur_defer
+ * 3-test_func-recur_defer
+ * function obj-2.2
+ * lambda
+ * 5-test_func-main
+ * 1-test_func-main
+ */
