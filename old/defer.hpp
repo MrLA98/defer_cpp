@@ -18,15 +18,15 @@ using std::function;
 using std::unordered_map;
 
 class Defer {
-private:
+ private:
   // node with defer action function
   struct Node {
     // constructors
     Node(function<void()> &&f) : func(std::forward<function<void()>>(f)) {}
     Node() : func(nullptr), next(nullptr) {}
 
-    function<void()> func; // store a defer action function
-    Node *next;            // next node
+    function<void()> func;  // store a defer action function
+    Node *next;             // next node
 
     // destructor run the defer action function
     ~Node() {
@@ -55,7 +55,7 @@ private:
     addr_map_.erase(addr_);
   }
 
-public:
+ public:
   // constructors
   template <class Func, class... Args>
   explicit Defer(uint64_t addr, Func &&f, Args &&...args)
@@ -96,4 +96,4 @@ public:
 // static variables
 unordered_map<uint64_t, Defer::Node *> Defer::addr_map_;
 
-} // namespace defer
+}  // namespace defer

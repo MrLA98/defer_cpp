@@ -27,7 +27,7 @@ func main() {
 // 1
 ```
 
-As a wish, I designed the defer macro in cpp version, which only have one file with 100 lines of codes.
+As a wish, I designed the defer macro in cpp version, which only have one file with 27 lines of codes.
 
 For instance:
 ```cpp

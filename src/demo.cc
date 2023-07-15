@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
 
-#include "defer.hpp"
+#include "defer.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
 void test_func(int t, string name) {
   cout << t << "-test_func-" << name << endl;
@@ -18,11 +20,11 @@ void recur_defer() {
 }
 
 class Obj {
-private:
+ private:
   int count_;
   double val_;
 
-public:
+ public:
   Obj() : count_(10), val_(1){};
   void operator()(double val) {
     val_ = val;
